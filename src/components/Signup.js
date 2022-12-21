@@ -33,7 +33,7 @@ export default function Singup() {
         {
           Name: name,
           Email: email,
-          Password: password,
+          password: password,
         },
         config
       );

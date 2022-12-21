@@ -1,7 +1,15 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-export default function Loggedin({ URL }) {
+export default function Loggedin() {
+  const navigate = useNavigate();
+
+  const userInfo = localStorage.getItem("userInfo");
+
+  const userData = JSON.parse(userInfo);
+  console.log("Loggedindata", userData);
+
   return (
     <div>
       <Container className="my-5">
@@ -15,7 +23,14 @@ export default function Loggedin({ URL }) {
         </div>
         <div className="logged out">
           <h4 className="text-center fw-bold">
-            <button>Log Out</button>
+            <button
+              onClick={() => {
+                localStorage.removeItem("userInfo");
+                navigate("/", { replace: true });
+              }}
+            >
+              Log Out
+            </button>
           </h4>
         </div>
       </Container>
